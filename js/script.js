@@ -12,22 +12,35 @@ console.log(pcNums);
 setTimeout(() => {
 
     //chiedo all'utente di inserire i numeri che ricorda
-    let userNums = prompt("Inserisci i numeri memorizzati").split(" ");
-    
+    let userNums = prompt("Inserisci i numeri memorizzati separati a uno spazio").split(" ");
+    //console.log("Numeri inseriti in stringa: " + userNums);
+
     //converto i numeri immessi dall'utente da string a number
     userNums = userNums.map((num) =>{
         return parseInt(num);
     })
-    console.log(userNums);
+    //console.log("Numeri inseriti convertiti in number: " + userNums);
+
+    /* while(isNaN(userNums)){
+        console.log("entro nel while");
+        userNums = prompt("Immissione non valida. Inserisci i numeri memorizzati separati a uno spazio").split(" ");
+        console.log("valori nel while prima della conversione: " + userNums);
+        userNums = userNums.map((num) =>{
+            return parseInt(num);
+        })
+
+        console.log("valore nel while: " + userNums);
+    } */
 
     //controllo se e quali numeri sono uguali a quelli del pc
     let equalNums = userNums.filter((element) => {
         return pcNums.includes(element);
     })
 
-    console.log("I numeri inseriti uguali sono: " + equalNums);
 
-}, 1000);
+    console.log(`I numeri corretti sono ${equalNums.length}: ${equalNums}`);
+
+}, 30000);
 
 
 
@@ -53,16 +66,18 @@ setTimeout(() => {
 
 
 /**
- * 
+ * Returns an array with arrLength random numbers
  * @param {number} arrLength 
- * @param {array} arrNums
  */
 function arrRandNums(arrLength) {
     let arrNums = [];
-    for (let i = 0; i < arrLength; i++) {
-        num = randomNumber();
-        arrNums.push(num);
-    };
+    let ranNum;
+    while (arrNums.length < arrLength){
+        ranNum = randomNumber();
 
+        if (!arrNums.includes(ranNum)){
+            arrNums.push(ranNum);
+        }        
+    }
     return arrNums;
 }
