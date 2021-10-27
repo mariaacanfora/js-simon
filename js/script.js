@@ -21,7 +21,11 @@ setTimeout(() => {
     console.log(userNums);
 
     //controllo se e quali numeri sono uguali a quelli del pc
+    let equalNums = userNums.filter((element) => {
+        return pcNums.includes(element);
+    })
 
+    console.log("I numeri inseriti uguali sono: " + equalNums);
 
 }, 1000);
 
